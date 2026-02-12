@@ -5,11 +5,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { TeamMember } from "@/types";
 import { useRouter } from "next/navigation";
 import { ScorecardView } from "@/components/views/ScoreCard";
-
-// Placeholder components for other views
-const DailyTaskView = () => (
-  <div className="text-white p-8">Daily Task View</div>
-);
+import DailyTaskView from "../../components/views/DailyTaskView";
 const TeamView = () => <div className="text-white p-8">Team View</div>;
 const IssuesView = () => <div className="text-white p-8">Issues View</div>;
 const RhythmView = () => <div className="text-white p-8">Rhythm View</div>;

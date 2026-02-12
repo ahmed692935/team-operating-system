@@ -622,17 +622,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             {/* Right Sidebar Column - Animated */}
             <AnimatePresence mode="popLayout">
               {showRightSidebar && (
-                <motion.div
-                  initial={{ width: 0, opacity: 0, x: 50 }}
-                  animate={{ width: 320, opacity: 1, x: 0 }}
-                  exit={{ width: 0, opacity: 0, x: 50 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className="shrink-0 hidden xl:block overflow-hidden border-l border-white/5 bg-[#050505]"
-                >
-                  <div className="w-80 px-6 pt-6 h-full">
+                <div className="w-80 shrink-0 hidden xl:block overflow-hidden border-l border-white/5 bg-[#050505]">
+                  <div className="w-80 px-6 pt-6 pb-6 h-full overflow-y-auto scrollbar-hide">
                     <RightSidebar member={member} />
                   </div>
-                </motion.div>
+                </div>
               )}
             </AnimatePresence>
           </div>

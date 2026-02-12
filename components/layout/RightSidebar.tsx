@@ -168,17 +168,17 @@ interface RightSidebarProps {
 
 export const RightSidebar: React.FC<RightSidebarProps> = ({ member }) => {
   return (
-    <div className="w-80 h-full flex flex-col space-y-8 overflow-y-auto scrollbar-hide pb-8">
+    <div className="w-full space-y-8">
       {/* EOD of Team Section */}
-      <div className="space-y-4 shrink-0">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-white">EOD of Team</h3>
-          <div className="bg-yellow-500 text-black text-xs font-bold px-2 py-0.5 rounded-full">
+      <div className="space-y-5">
+        <div className="flex items-center justify-between px-1">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wide">EOD of Team</h3>
+          <div className="bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full h-fit">
             3
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           <EodItem
             name="Head of Growth"
             action="Submitted weekly report"
@@ -208,37 +208,36 @@ export const RightSidebar: React.FC<RightSidebarProps> = ({ member }) => {
       </div>
 
       {/* Upcoming Meetings Section */}
-      <div className="space-y-4 shrink-0">
-        <h3 className="text-lg font-semibold text-white">Upcoming Rhythm</h3>
+      <div className="space-y-5">
+        <h3 className="text-sm font-bold text-white uppercase tracking-wide px-1">Upcoming Rhythm</h3>
 
         {/* Immediate Next Meeting (Big Card) */}
-        <div className="relative rounded-[1.5rem] overflow-hidden p-6 min-h-[180px] flex flex-col justify-between bg-[#1E1E24] group hover:bg-[#25252b] transition-all">
+        <div className="relative rounded-[1.5rem] overflow-hidden p-6 min-h-[200px] flex flex-col justify-between bg-[#1E1E24] group hover:bg-[#25252b] transition-all border border-white/5">
           {/* Decorative Elements */}
           <div className="absolute -right-6 -bottom-10 w-32 h-32 rounded-full border-[6px] border-yellow-500/5 group-hover:border-yellow-500/10 transition-colors"></div>
           <div className="absolute -right-2 -bottom-6 w-24 h-24 rounded-full border-[6px] border-yellow-500/5 group-hover:border-yellow-500/10 transition-colors"></div>
 
           <div className="relative z-10">
-            <div className="flex justify-between items-start mb-2">
-              <h4 className="text-white font-bold text-lg">
+            <div className="flex justify-between items-start gap-3 mb-3">
+              <h4 className="text-white font-bold text-lg leading-tight">
                 Friday After Review
               </h4>
-              <span className="text-yellow-500 font-bold text-xs bg-yellow-500/10 px-2 py-1 rounded-lg">
+              <span className="text-yellow-500 font-bold text-xs bg-yellow-500/10 px-3 py-1 rounded-lg shrink-0 border border-yellow-500/20">
                 Now
               </span>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-              Coming up in 2 hours. Prepare your scorecard and review weekly
-              KPIs.
+              Coming up in 2 hours. Prepare your scorecard and review weekly KPIs.
             </p>
 
-            <button className="bg-yellow-500 hover:bg-yellow-400 text-black text-sm font-bold py-3.5 px-6 rounded-xl transition-colors w-full flex items-center justify-center gap-2 shadow-lg shadow-yellow-500/20">
-              Join Meeting <ChevronRight size={16} />
+            <button className="bg-yellow-500 hover:bg-yellow-400 text-black text-sm font-bold py-4 px-6 rounded-2xl transition-colors w-full flex items-center justify-center gap-2 shadow-lg shadow-yellow-500/20">
+              Join Meeting <ChevronRight size={18} />
             </button>
           </div>
         </div>
 
         {/* Future Meetings List */}
-        <div className="bg-[#1E1E24] rounded-[1.5rem] p-2 space-y-1">
+        <div className="bg-[#1E1E24] rounded-[1.5rem] p-3 space-y-2 border border-white/5">
           <MeetingItem
             title="Monday Morning Download"
             time="Mon, 9:00 AM"
@@ -267,26 +266,26 @@ export const RightSidebar: React.FC<RightSidebarProps> = ({ member }) => {
 };
 
 const EodItem = ({ name, action, time, avatar, bg, badge, status }: any) => (
-  <div className="flex items-center gap-4 p-3 rounded-2xl bg-[#1E1E24] hover:bg-[#25252b] cursor-pointer transition-all group border border-transparent hover:border-white/5">
+  <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#1E1E24] hover:bg-[#25252b] cursor-pointer transition-all group border border-white/5 hover:border-white/10">
     <div
-      className={`w-10 h-10 rounded-full ${bg} text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-lg`}
+      className={`w-12 h-12 rounded-full ${bg} text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-lg`}
     >
       {avatar}
     </div>
     <div className="flex-1 min-w-0">
-      <div className="flex justify-between items-center mb-0.5">
-        <div className="text-white font-bold text-sm truncate">{name}</div>
-        <div className="text-gray-500 text-[10px]">{time}</div>
+      <div className="flex justify-between items-start mb-1">
+        <div className="text-white font-bold text-sm">{name}</div>
+        <div className="text-gray-500 text-xs ml-2 shrink-0">{time}</div>
       </div>
-      <div className="text-gray-400 text-xs truncate flex items-center gap-2">
+      <div className="text-gray-400 text-xs flex items-center gap-2">
         {status === "Blocked" && (
-          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse shrink-0"></span>
         )}
-        {action}
+        <span>{action}</span>
       </div>
     </div>
     {badge && (
-      <div className="w-5 h-5 rounded-full bg-red-500 text-white text-[10px] flex items-center justify-center shrink-0 font-bold shadow-lg shadow-red-500/20">
+      <div className="w-6 h-6 rounded-full bg-red-500 text-white text-xs flex items-center justify-center shrink-0 font-bold shadow-lg shadow-red-500/20">
         {badge}
       </div>
     )}
@@ -294,23 +293,23 @@ const EodItem = ({ name, action, time, avatar, bg, badge, status }: any) => (
 );
 
 const MeetingItem = ({ title, time, duration, color, bg }: any) => (
-  <div className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group">
-    <div className="flex items-center gap-3">
+  <div className="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group">
+    <div className="flex items-center gap-3 flex-1 min-w-0">
       <div
-        className={`w-10 h-10 rounded-xl ${bg} ${color} flex items-center justify-center shrink-0`}
+        className={`w-10 h-10 rounded-lg ${bg} ${color} flex items-center justify-center shrink-0`}
       >
         <Calendar size={18} />
       </div>
-      <div>
-        <div className="text-white font-bold text-sm group-hover:text-yellow-500 transition-colors">
+      <div className="min-w-0 flex-1">
+        <div className="text-white font-bold text-sm group-hover:text-yellow-500 transition-colors truncate">
           {title}
         </div>
-        <div className="text-gray-500 text-xs flex items-center gap-2">
+        <div className="text-gray-500 text-xs truncate">
           {time}
         </div>
       </div>
     </div>
-    <div className="text-gray-600 text-xs font-medium bg-[#111] px-2 py-1 rounded-md border border-white/5">
+    <div className="text-gray-600 text-xs font-medium shrink-0 ml-2">
       {duration}
     </div>
   </div>
