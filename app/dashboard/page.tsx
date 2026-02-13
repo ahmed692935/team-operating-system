@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { TeamMember } from "@/types";
 import { useRouter } from "next/navigation";
 import { ScorecardView } from "@/components/views/ScoreCard";
 import DailyTaskView from "../../components/views/DailyTaskView";
 import { TeamUpdates } from "@/components/layout/TeamUpdates";
-const TeamView = () => <div className="text-white p-8">Team View</div>;
+import TeamRosterView from "@/components/views/TeamRosterView";
+const TeamView = () => <TeamRosterView />;
 const IssuesView = () => <div className="text-white p-8">Issues View</div>;
 const RhythmView = () => <div className="text-white p-8">Rhythm View</div>;
 const BusinessView = () => <div className="text-white p-8">Business View</div>;
@@ -20,7 +22,15 @@ const AdminView = () => (
 
 export default function DashboardPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [currentView, setCurrentView] = useState("scorecard");
+
+  useEffect(() => {
+    const viewParam = searchParams.get("view");
+    if (viewParam) {
+      setCurrentView(viewParam);
+    }
+  }, [searchParams]);
 
   // Mock user data - replace with actual authentication
   const member: TeamMember = {
