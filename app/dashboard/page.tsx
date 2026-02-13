@@ -6,6 +6,7 @@ import { TeamMember } from "@/types";
 import { useRouter } from "next/navigation";
 import { ScorecardView } from "@/components/views/ScoreCard";
 import DailyTaskView from "../../components/views/DailyTaskView";
+import { TeamUpdates } from "@/components/layout/TeamUpdates";
 const TeamView = () => <div className="text-white p-8">Team View</div>;
 const IssuesView = () => <div className="text-white p-8">Issues View</div>;
 const RhythmView = () => <div className="text-white p-8">Rhythm View</div>;
@@ -40,7 +41,19 @@ export default function DashboardPage() {
       case "scorecard":
         return <ScorecardView member={member} />;
       case "dailytask":
-        return <DailyTaskView />;
+        return (
+          <div className="flex gap-8 h-full w-full">
+            {/* LEFT COLUMN: Check-in Form */}
+            <div className="flex-1 min-w-0 overflow-y-auto">
+              <DailyTaskView />
+            </div>
+
+            {/* RIGHT COLUMN: Team Updates - fixed width */}
+            <div className="w-[420px] shrink-0 overflow-y-auto hidden lg:block">
+              <TeamUpdates />
+            </div>
+          </div>
+        );
       case "team":
         return <TeamView />;
       case "issues":
