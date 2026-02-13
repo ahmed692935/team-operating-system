@@ -311,6 +311,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Logo from "../../public/images/logo.png";
+import Image from "next/image";
 
 interface DashboardLayoutProps {
   currentView: string;
@@ -377,10 +379,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
               {/* Logo */}
               <div className="mb-12 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-black font-bold text-xl shrink-0">
+                {/* <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-black font-bold text-xl shrink-0">
                   T
-                </div>
-                <span className="text-xl font-bold text-white">TaskFlow</span>
+                </div> */}
+                <Image alt="Logo" src={Logo} height={80} />
+                {/* <span className="text-xl font-bold text-white">TaskFlow</span> */}
               </div>
 
               {/* Menu Items */}
@@ -439,10 +442,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       >
         {/* Logo */}
         <div className="mb-12 px-6 flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-yellow-500/20 shrink-0">
+          {/* <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-black font-bold text-xl shadow-lg shadow-yellow-500/20 shrink-0">
             T
-          </div>
-          <motion.span
+          </div> */}
+          <Image alt="Logo" src={Logo} height={80} />
+
+          {/* <motion.span
             initial={false}
             animate={{
               opacity: sidebarExpanded ? 1 : 0,
@@ -452,11 +457,11 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             className="text-xl font-bold text-white whitespace-nowrap"
           >
             TaskFlow
-          </motion.span>
+          </motion.span> */}
         </div>
 
         {/* Menu Items */}
-        <nav className="flex-1 flex flex-col gap-3 px-3">
+        <nav className="flex-1 flex flex-col gap-3 px-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentView === item.id;
